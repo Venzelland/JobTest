@@ -95,28 +95,28 @@
         event.preventDefault();
         const deal = {
             title: document.getElementById('jobType').value + ' Job for ' + document.getElementById('firstName').value + ' ' + document.getElementById('lastName').value,
-            value: 0, // Update as per requirement
-            "0d3656e279d4ac534fc770d367d5ca7cb0c55159": document.getElementById('address').value,
-            '8ed78dd5c4f32e38d16679d558bd0baa145c2cc4': document.getElementById('phone').value,
-            "8aadd935764096ba54a1f08f3b48ea2d6838c0b9": document.getElementById('email').value,
-            'f3e90abe0d160722b712497948aacce0f109f910': document.getElementById('jobType').value,
-            '27b9b181c07b4cc4e7d04abebae0ade7fd38cbf8': document.getElementById('jobSource').value,
-            '5ce7901edb5cd246239405d1d1a4a7235cfb9645': document.getElementById('jobDescription').value,
-            'e8418488ded56bbaf70afc534f2890e11117fe4f': document.getElementById('city').value,
-            'e26c99e84d77b6e02806fc4b0dced1a679fdcf15': document.getElementById('state').value,
-            'b189940872db257e68a7e46c78a8058e9158a293': document.getElementById('zipCode').value,
-            '2ac7ef0e89844b6b35a9432d34572e5155e97553': document.getElementById('area').value,
-            '4463a6fffaf8e0d2d02e59fb36c4d3e6d9c25585': document.getElementById('startDate').value,
-            '28f94ff4fc3ab33691b073e8ffefb22b8e314358': document.getElementById('startTime').value,
-            '2265cdb34ac92b49dc4c178ce8c989f6ec87e81b': document.getElementById('endTime').value,
-            '6b323b680e71c53825ee691256980f5c54e27e4e': document.getElementById('testSelect').value
+            value: 0,
+            "b2215522686adff59b85d4e36c8852797da42323": document.getElementById('address').value,
+            '5612170187979f10dfc9cff913476bab1eb4ef0e': document.getElementById('phone').value,
+            "88ebdca0a075989afc14d2fd84c3d43caea7e9f3": document.getElementById('email').value,
+            '468feac486ec3b824c4a406c9370666b155d3d25': document.getElementById('jobType').value,
+            '3b09081bc662c208c929ab70df280cbe2013939b': document.getElementById('jobSource').value,
+            '175f81a3044c66b3eb30da120b22c559fabb9590': document.getElementById('jobDescription').value,
+            '05df333d4fbf13026708af36ecd5a6d0b765ff1a': document.getElementById('city').value,
+            '8cbddb39156d53a3ebb9500ec317bab43c964ec7': document.getElementById('state').value,
+            'fe326d7322e25510d695de633815dbcdbc654540': document.getElementById('zipCode').value,
+            'e5ae71b95b8f5634f2f8e1edcda9699268a37a96': document.getElementById('area').value,
+            '5b313fdaea5639ceeba98688d5bb70fa38aeda83': document.getElementById('startDate').value,
+            '87235f371c08c1f5abf855b7b6acba9cdba0413e': document.getElementById('startTime').value,
+            '93238d7a8dcc21c730b3cefbcf0bf447bcc39219': document.getElementById('endTime').value,
+            '3766acea71bb9a31e0537a72464b99aebcff67a8': document.getElementById('testSelect').value
 
         };
         createPipedriveDeal(deal);
     });
 
     function createPipedriveDeal(deal) {
-        const apiToken = '1ffcb07bc4efb07d54a83d525458ee66e758afb3';
+        const apiToken = '7826180059028272f44b8859fad8ec43dd15890d';
         const url = `https://api.pipedrive.com/v1/deals?api_token=${apiToken}`;
 
         fetch(url, {
