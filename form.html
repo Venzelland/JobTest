@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container border border-primary rounded">
+    <h2 class="my-4">Job Form</h2>
+    <form id="jobForm">
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <h3>Client details</h3>
+                    <div class="name-input-group row-input">
+                        <input type="text" id="firstName" class="form-control" placeholder="First Name" required="">
+                        <input type="text" id="lastName" class="form-control" placeholder="Last Name" required="">
+                    </div>
+                    <input type="tel" id="phone" class="form-control" placeholder="Phone" required="">
+                    <input type="email" id="email" class="form-control" placeholder="Email (optional)" required="">
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <h3>Job details</h3>
+                    <div class="row-input">
+                        <select id="jobType" class="form-control" required="">
+                            <option value="">Job type</option>
+                            <option value="type1">Type 1</option>
+                            <option value="type2">Type 2</option>
+                        </select>
+                        <select id="jobSource" class="form-control" required="">
+                            <option value="">Job source</option>
+                            <option value="source1">Source 1</option>
+                            <option value="source2">Source 2</option>
+                        </select>
+                    </div>
+
+
+                    <textarea id="jobDescription" class="form-control"
+                              placeholder="Job description (optional)"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <h3>Service location</h3>
+                    <input type="text" id="address" class="form-control" placeholder="Address" required="">
+                    <input type="text" id="city" class="form-control" placeholder="City" required="">
+                    <input type="text" id="state" class="form-control" placeholder="State" required="">
+                    <div class="row-input">
+                        <input type="text" id="zipCode" class="form-control" placeholder="Zip Code" required="">
+                        <select id="area" class="form-control" required="">
+                            <option value="">Area</option>
+                            <option value="area1">Area 1</option>
+                            <option value="area2">Area 2</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <h3>Scheduled</h3>
+                    <input type="date" id="startDate" class="form-control" required="">
+                    <div class="row-input">
+                        <input type="time" id="startTime" class="form-control" placeholder="Enter time" required>
+                        <input type="time" id="endTime" class="form-control" required="">
+                    </div>
+                    <select id="testSelect" class="form-control" required="">
+                        <option value="">Test select</option>
+                        <option value="test1">Test 1</option>
+                        <option value="test2">Test 2</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary my-2">Submit</button>
+        </div>
+
+    </form>
+</div>
+
+<script>
+    document.getElementById('jobForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+        const deal = {
+            title: document.getElementById('jobType').value + ' Job for ' + document.getElementById('firstName').value + ' ' + document.getElementById('lastName').value,
+            value: 0, // Update as per requirement
+            "0d3656e279d4ac534fc770d367d5ca7cb0c55159": document.getElementById('address').value,
+            '8ed78dd5c4f32e38d16679d558bd0baa145c2cc4': document.getElementById('phone').value,
+            "8aadd935764096ba54a1f08f3b48ea2d6838c0b9": document.getElementById('email').value,
+            'f3e90abe0d160722b712497948aacce0f109f910': document.getElementById('jobType').value,
+            '27b9b181c07b4cc4e7d04abebae0ade7fd38cbf8': document.getElementById('jobSource').value,
+            '5ce7901edb5cd246239405d1d1a4a7235cfb9645': document.getElementById('jobDescription').value,
+            'e8418488ded56bbaf70afc534f2890e11117fe4f': document.getElementById('city').value,
+            'e26c99e84d77b6e02806fc4b0dced1a679fdcf15': document.getElementById('state').value,
+            'b189940872db257e68a7e46c78a8058e9158a293': document.getElementById('zipCode').value,
+            '2ac7ef0e89844b6b35a9432d34572e5155e97553': document.getElementById('area').value,
+            '4463a6fffaf8e0d2d02e59fb36c4d3e6d9c25585': document.getElementById('startDate').value,
+            '28f94ff4fc3ab33691b073e8ffefb22b8e314358': document.getElementById('startTime').value,
+            '2265cdb34ac92b49dc4c178ce8c989f6ec87e81b': document.getElementById('endTime').value,
+            '6b323b680e71c53825ee691256980f5c54e27e4e': document.getElementById('testSelect').value
+
+        };
+        createPipedriveDeal(deal);
+    });
+
+    function createPipedriveDeal(deal) {
+        const apiToken = '1ffcb07bc4efb07d54a83d525458ee66e758afb3';
+        const url = `https://api.pipedrive.com/v1/deals?api_token=${apiToken}`;
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(deal)
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Сделка успешно создана!');
+                } else {
+                    alert('Ошибка при создании сделки: ' + data.error);
+                }
+            })
+            .catch(error => {
+                console.error('Ошибка:', error);
+                alert('Ошибка при создании сделки: ' + error.message);
+            });
+    }
+</script>
+</body>
+</html>
