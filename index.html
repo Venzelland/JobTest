@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ru">
-<script src="https://cdn.jsdelivr.net/npm/@pipedrive/app-extensions-sdk@0/dist/index.umd.js"></script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,35 +23,5 @@
 <div id="iframe-container">
     <iframe src="form.html"></iframe>
 </div>
-<script src="https://cdn.pipedrive.com/custom-apps/pipedrive.js"></script>
-<script>
-    Pipedrive.initialize({
-        version: '1.0',
-        onLoad: function() {
-            var container = document.createElement('div');
-            container.id = 'formContainer';
-            container.innerHTML = `
-                <button id="openFormBtn">Открыть форму</button>
-                <div id="formModal" style="display:none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; border: 1px solid #ccc; z-index: 1000;">
-                    <div id="iframe-container">
-                        <iframe src="https://venzelland.github.io/JobTest/"></iframe>
-                    </div>
-                </div>
-                <div id="modalBackdrop" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 999;"></div>
-            `;
-            document.body.appendChild(container);
-
-            document.getElementById('openFormBtn').addEventListener('click', function() {
-                document.getElementById('formModal').style.display = 'block';
-                document.getElementById('modalBackdrop').style.display = 'block';
-            });
-
-            document.getElementById('modalBackdrop').addEventListener('click', function() {
-                document.getElementById('formModal').style.display = 'none';
-                document.getElementById('modalBackdrop').style.display = 'none';
-            });
-        }
-    });
-</script>
 </body>
 </html>
